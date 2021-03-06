@@ -1,6 +1,7 @@
 import os
 from decouple import config
 import dj_database_url 
+from whitenoise import WhiteNoise
 
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
 
@@ -76,7 +77,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' #whitenoise.django.GzipManifestStaticFilesStorage'
 
 
 DATABASES = {
