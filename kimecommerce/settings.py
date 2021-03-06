@@ -78,7 +78,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' #whitenoise.django.GzipManifestStaticFilesStorage'
-
+DBUS_CFLAGS= False
+DBUS_LIBS =False
 
 DATABASES = {
     "default": {
