@@ -3,7 +3,7 @@ from decouple import config
 import dj_database_url 
 from whitenoise import WhiteNoise
 
-ENVIRONMENT = os.getenv('ENVIRONMENT', 'DBUS_CFLAGS',  'DBUS_LIBS', 'production')
+ENVIRONMENT = os.getenv('ENVIRONMENT', 'production')
 
 DEBUG = False #True
 #DEBUG = config('DEBUG', default=False, cast=bool)
