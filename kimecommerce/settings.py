@@ -3,8 +3,6 @@ from decouple import config
 import dj_database_url 
 from whitenoise import WhiteNoise
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "kimecommerce.settings")
-
 
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'production')
 
@@ -88,8 +86,8 @@ DBUS_LIBS =False
 
 DATABASES = {
     "default": {
-        # "ENGINE": "django.db.backends.sqlite3",
-        # "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
         
     }
 }
