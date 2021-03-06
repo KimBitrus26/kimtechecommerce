@@ -6,7 +6,7 @@ from whitenoise import WhiteNoise
 
 #ENVIRONMENT = os.getenv('ENVIRONMENT', 'production')
 
-DEBUG = True
+DEBUG = False #True
 #DEBUG = config('DEBUG', default=False, cast=bool)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-05sgp9!deq=q1nltm@^^2cc+v29i(tyybv3v2t77qi66czazj'
@@ -78,7 +78,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' #whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' #whitenoise.django.GzipManifestStaticFilesStorage'
 
 DATABASES = {
     "default": {
@@ -128,12 +128,3 @@ STRIPE_SECRET_KEY = 'sk_test_51IQVmdBnuvfAc1PJJX3QZT6H3J5NE5N9n6KI4CrWvuYDBInpQo
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
 
-
-# PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
-# STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
-# STATIC_URL = '/static/'
-
-# # Extra lookup directories for collectstatic to find static files
-# STATICFILES_DIRS = (
-#     os.path.join(PROJECT_ROOT, 'static'),
-# )
