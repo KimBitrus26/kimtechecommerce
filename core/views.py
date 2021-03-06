@@ -384,7 +384,7 @@ class PaymentView(LoginRequiredMixin,View):
 
 class HomeView(ListView):
     model = Item
-    paginate_by = 3#paginate by 10
+    paginate_by = 2 #paginate by 10
     template_name = 'home.html'
     # context_object_name = 'item-list'
     # queryset = Item.objects.all()
