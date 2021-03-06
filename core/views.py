@@ -542,8 +542,8 @@ class AddCouponView(View):
                 messages.info(self.request, "This coupon does not exist")
                 return redirect("core:checkout")
 
-def userProfile(request):
-    return render(request, 'user.html')
+# def userProfile(request):
+#     return render(request, 'user.html')
         
 class RequestRefundView(View):
     def get(self, *args, **kwargs):
