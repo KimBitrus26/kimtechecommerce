@@ -32,11 +32,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_countries',
     'squareconnect',
-    'whitenoise',
-    'gunicorn',
 
-    'psycopg2'
-    
 ]
 
 MIDDLEWARE = [
