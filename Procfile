@@ -1,0 +1,1 @@
+web: gunicorn kimecommerce.wsgi --log-file -
