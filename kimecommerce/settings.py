@@ -12,7 +12,7 @@ DEBUG = False
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-05sgp9!deq=q1nltm@^^2cc+v29i(tyybv3v2t77qi66czazj'
 #SECRET_KEY = config('SECRET_KEY', '-05sgp9!deq=q1nltm@^^2cc+v29i(tyybv3v2t77qi66czazj')
-ALLOWED_HOSTS = ['kimecommerce.herokuapp.com']
+ALLOWED_HOSTS =  ['kimecommerce.herokuapp.com']
 
 
 
@@ -146,5 +146,5 @@ AWS_STORAGE_BUCKET_NAME='kimtech'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL= None
 DEFAULT_FILE_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' 
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' 
 
