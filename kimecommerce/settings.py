@@ -2,6 +2,7 @@ import os
 from decouple import config
 import dj_database_url 
 from whitenoise import WhiteNoise
+import boto3
 
 
 #ENVIRONMENT = os.getenv('ENVIRONMENT', 'production')
@@ -33,7 +34,7 @@ INSTALLED_APPS = [
     'django_countries',
     'squareconnect',
     'storages',
-    'boto3'
+    
 
 ]
 
@@ -72,9 +73,9 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# STATIC_URL = '/static/'
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_files')]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_files')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -134,31 +135,16 @@ DATABASES['default'].update(prod_db)
 
 
 
-AWS_ACCESS_KEY_ID='AKIAJUUXZD2KP6U247PA'
+#AWS_ACCESS_KEY_ID='AKIAJUUXZD2KP6U247PA'
+AWS_ACCESS_KEY_ID=  'AKIA3JIJOCTJ7ZCVU765'
+AWS_SECRET_ACCESS_KEY='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'
 
-AWS_SECRET_ACCESS_KEY='hMn9ltywpChr9AFEsySsZGiTilFvw/7LZE855UCp'
+#AWS_SECRET_ACCESS_KEY='hMn9ltywpChr9AFEsySsZGiTilFvw/7LZE855UCp'
 
 AWS_STORAGE_BUCKET_NAME='kimtech'
 
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-AWS_LOCATION = 'static'
-#STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-
-
-MEDIA_URL = 'https://s3.amazonaws.com:443/%s/media/' % AWS_STORAGE_BUCKET_NAME
-STATIC_URL = 'https://s3.amazonaws.com:443/%s/static/' % AWS_STORAGE_BUCKET_NAME
-
-DEFAULT_FILE_STORAGE =  'storages.backends.s3boto.S3BotoStorage' 
-
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-
-
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'storage_backends.StaticFilesStorage'
-
-MEDIAFILES_LOCATION = 'media'
-MEDIAFILES_STORAGE = 'storage_backends.MediaFilesStorage'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL= None
+DEFAULT_FILE_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' 
 
