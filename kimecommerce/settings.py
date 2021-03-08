@@ -32,7 +32,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_countries',
     'squareconnect',
-    'storages'
+    'storages',
+    'boto3'
 
 ]
 
@@ -71,11 +72,11 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_files')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_files')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 #this works with debug=false
@@ -144,8 +145,20 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 AWS_LOCATION = 'static'
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+#STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+
+MEDIA_URL = 'https://s3.amazonaws.com:443/%s/media/' % AWS_STORAGE_BUCKET_NAME
+STATIC_URL = 'https://s3.amazonaws.com:443/%s/static/' % AWS_STORAGE_BUCKET_NAME
+
+DEFAULT_FILE_STORAGE =  'storages.backends.s3boto.S3BotoStorage' 
 
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-DEFAULT_FILE_STORAGE = 'storage_backends.MediaStorage'
+
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'storage_backends.StaticFilesStorage'
+
+MEDIAFILES_LOCATION = 'media'
+MEDIAFILES_STORAGE = 'storage_backends.MediaFilesStorage'
+
