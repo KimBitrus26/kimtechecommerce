@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_countries',
     'squareconnect',
+    'storages'
 
 ]
 
@@ -73,10 +74,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_files')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_URL = '/media/'
+#MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+#this works with debug=false
+#STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' #whitenoise.django.GzipManifestStaticFilesStorage'
 
@@ -128,3 +131,21 @@ STRIPE_SECRET_KEY = 'sk_test_51IQVmdBnuvfAc1PJJX3QZT6H3J5NE5N9n6KI4CrWvuYDBInpQo
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
 
+
+
+AWS_ACCESS_KEY_ID='AKIAJUUXZD2KP6U247PA'
+
+AWS_SECRET_ACCESS_KEY='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'
+
+AWS_STORAGE_BUCKET_NAME='kimtech'
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+DEFAULT_FILE_STORAGE = 'storage_backends.MediaStorage'
