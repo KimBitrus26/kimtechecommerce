@@ -1,10 +1,11 @@
-env
+.env
 **/*.pyc
 **/__pycache__
 media
 .DS_Store
 *.sqlite3
 *.env
+myvenv
 
 # Accept these files in the repository
 !.gitignore
