@@ -10,8 +10,7 @@ import boto3
 DEBUG = False
 #DEBUG = config('DEBUG', default=False, cast=bool)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = '-'
-#SECRET_KEY = config('SECRET_KEY', '')
+
 ALLOWED_HOSTS =  ['kimecommerce.herokuapp.com']
 
 
@@ -125,23 +124,13 @@ LOGIN_REDIRECT_URL = "/"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-STRIPE_PUBLIC_KEY = ''
-#STRIPE_SECRET_KEY = ''
-STRIPE_SECRET_KEY = ''
+STRIPE_PUBLIC_KEY = 'pk_test_51IQVmdBnuvfAc1PJVBLJu0JBrO7ZxJ03ensUSK6T5av6SDrOyVsZNSHR9RgbAxfhEnD46BYvgQGoqpA5YOxpqX0D00YTURh4qZ'
+
+#STRIPE_SECRET_KEY = 'sk_test_51IQVmdBnuvfAc1PJJX3QZT6H3J5NE5N9n6KI4CrWvuYDBInpQo4jspP9RCXWACV336QBPygChFhJok5f7d8MNeUw002uT40MWE'
+STRIPE_SECRET_KEY = 'sk_test_51IQVmdBnuvfAc1PJJX3QZT6H3J5NE5N9n6KI4CrWvuYDBInpQo4jspP9RCXWACV336QBPygChFhJok5f7d8MNeUw002uT40MWE'
+
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
 
 
-
-#AWS_ACCESS_KEY_ID=''
-AWS_ACCESS_KEY_ID=  ''
-AWS_SECRET_ACCESS_KEY=''
-#AWS_SECRET_ACCESS_KEY=''
-
-AWS_STORAGE_BUCKET_NAME='kimtech'
-
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL= None
-DEFAULT_FILE_STORAGE =  'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage' 
 
